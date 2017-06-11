@@ -24,7 +24,9 @@ RUN cd ${APP_DIR} && \
     npm install && \
     npm cache clean --force
 
-COPY ./dist/.gitignore ${APP_DIR}/dist/.gitignore
+# Directory dist needs to exists
+RUN mkdir -p ${APP_DIR}/dist/.gitignore
+
 COPY ./.npmrc ${APP_DIR}/.npmrc
 COPY ./webpack.config.js ${APP_DIR}/webpack.config.js
 COPY ./webpack ${APP_DIR}/webpack
