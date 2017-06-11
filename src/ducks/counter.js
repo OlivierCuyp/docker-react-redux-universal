@@ -1,16 +1,18 @@
-import { COUNTER_SET, COUNTER_INCREMENT, COUNTER_DECREMENT } from '../constants';
+const SET = 'counter/SET';
+const INCREMENT = 'counter/INCREMENT';
+const DECREMENT = 'counter/DECREMENT';
 
 export const set = (value) => ({
-  type: COUNTER_SET,
+  type: SET,
   payload: value
 });
 
 export const increment = () => ({
-  type: COUNTER_INCREMENT
+  type: INCREMENT
 });
 
 export const decrement = () => ({
-  type: COUNTER_DECREMENT
+  type: DECREMENT
 });
 
 export const incrementIfOdd = () => (dispatch, getState) => {
@@ -28,3 +30,18 @@ export const incrementAsync = (delay = 1000) => dispatch => {
     dispatch(increment());
   }, delay);
 };
+
+const reducer = (state = 0, action) => {
+  switch (action.type) {
+    case SET:
+      return action.payload;
+    case INCREMENT:
+      return state + 1;
+    case DECREMENT:
+      return state - 1;
+    default:
+      return state;
+  }
+};
+
+export default reducer;
