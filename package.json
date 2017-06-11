@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "find dist ! -name '.gitignore' -delete",
     "build": "npm run clean; webpack --progress --color",
-    "watch": "npm run clean; WK_NODEMON=1 webpack --progress --color --watch",
+    "watch": "npm run clean; WK_DEV_MODE=1 webpack --progress --color --watch",
     "start": "node ./dist/server"
   },
   "author": "Olivier Cuypers <oliviercuyp@sagacify.com>",

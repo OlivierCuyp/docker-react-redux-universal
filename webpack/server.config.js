@@ -5,7 +5,7 @@ const path = require('path');
 const buildDirectory = path.resolve(__dirname, '../dist/server');
 const plugins = [];
 
-if (process.env.WK_NODEMON) {
+if (process.env.WK_DEV_MODE) {
   plugins.push(
     new WebpackShellPlugin({
       onBuildEnd: [ `nodemon --watch ${buildDirectory} ${buildDirectory}/index.js` ]
