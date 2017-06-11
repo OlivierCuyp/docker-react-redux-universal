@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  node:
+    build:
+      context: .
+      args:
+        NPM_TOKEN: ${NPM_TOKEN}
+    command: npm run watch
+    environment:
+      NPM_TOKEN: ${NPM_TOKEN}
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./.npmrc:/var/www/.npmrc
+      - ./package.json:/var/www/package.json
+      - ./webpack.config.js:/var/www/webpack.config.js
+      - ./webpack:/var/www/webpack
+      - ./config:/var/www/config
+      - ./src:/var/www/src
+      - ./test:/var/www/test
+      - ./coverage:/var/www/coverage
